@@ -74,3 +74,11 @@ img {
   background-size: 100%;
 }
 
+.banner-control-left {
+  background: url('../img/banner-control-left.png');
+}
+
+.banner-control-right {
+  background: url('../img/banner-control-right.png');
+}
+

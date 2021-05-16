@@ -1,9 +1,35 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 
-export default memo(function CFDiscover() {
+import {
+  discoverNavLink
+} from '@/common/music-nav-data'
+
+import {
+  DiscoverWrapper,
+  DiscoverNav,
+  DiscoverMenu
+} from './style'
+import { NavLink } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
+
+export default memo(function CFDiscover(props) {
+  const { route } = props
+  useEffect(() => {
+  })
   return (
-    <div>
-      <h2>发现音乐</h2>
-    </div>
+    <DiscoverWrapper>
+      <DiscoverNav>
+        <DiscoverMenu className='wrap-v2'>
+          {
+            discoverNavLink.map((item) => {
+              return (<div className='menu-item' key={item.title}>
+                <NavLink to={item.path} >{item.title}</NavLink>
+              </div>)
+            })
+          }
+        </DiscoverMenu>
+      </DiscoverNav>
+      {renderRoutes(route.routes)}
+    </DiscoverWrapper>
   )
 })

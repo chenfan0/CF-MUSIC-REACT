@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 
 
-import musicNavData from '@/common/music-nav-data'
+import { musicNavData } from '@/common/music-nav-data'
 
 // 导入antd组件
 import { Input } from 'antd'
