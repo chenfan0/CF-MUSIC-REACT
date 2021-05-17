@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import download from '@/assets/img/download.png'
 
-export const TopBannerWrapper = styled.div`
+export const CFTopBannerWrapper = styled.div`
   position: relative;
   background: url(${props => props.bgImgUrl}) center center/6000px;
   .banner {

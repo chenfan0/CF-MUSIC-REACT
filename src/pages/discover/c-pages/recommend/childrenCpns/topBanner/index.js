@@ -8,7 +8,7 @@ import {
 } from '../../store/actionCreator'
 
 import {
-  TopBannerWrapper,
+  CFTopBannerWrapper,
   BannerLeft,
   BannerRight
 } from './style'
@@ -38,9 +38,10 @@ export default memo(function Swiper() {
   }, [])
 
   // 其他逻辑
+  // 判断图片地址本身是否含有 ?imageView
   let bgUrl = topBanners[currentIndex] && topBanners[currentIndex].imageUrl
   if (bgUrl) {
-    if (bgUrl.indexOf() === -1) {
+    if (bgUrl.indexOf('?imageView') === -1) {
       bgUrl = bgUrl + '?imageView&blur=40x20'
     } else {
       bgUrl = bgUrl + '&blur=40x20'
@@ -48,7 +49,7 @@ export default memo(function Swiper() {
   }
 
   return (
-    <TopBannerWrapper bgImgUrl={bgUrl}>
+    <CFTopBannerWrapper bgImgUrl={bgUrl}>
       <div className='banner wrap-v2' >
         <BannerLeft>
           <Carousel
@@ -72,6 +73,6 @@ export default memo(function Swiper() {
       </div>
       <button className='banner-left-btn banner-control-left' onClick={e => bannerRef.current.prev()}></button>
       <button className='banner-right-btn banner-control-right' onClick={e => bannerRef.current.next()}></button>
-    </TopBannerWrapper>
+    </CFTopBannerWrapper>
   )
 })
