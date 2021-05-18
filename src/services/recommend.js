@@ -20,3 +20,12 @@ export function getNewAlbums() {
     url: '/album/newest'
   })
 }
+
+export function getRanking(idx) {
+  return request({
+    url: '/top/list',
+    params: {
+      idx
+    }
+  })
+}

@@ -87,10 +87,6 @@ body {
   background: url('../img/sprite_icon.png') no-repeat 0 9999px;
 }
 
-.a_indent {
-  text-indent: -9999px;
-}
-
 .mine_bgc_img {
   background: url('../img/mine_sprite.png') no-repeat;
   background-size: 100%;
@@ -104,4 +100,11 @@ body {
   background: url('../img/banner-control-right.png');
 }
 
+.recommend_bg_img {
+  background: url('../img/recommend-top-bg.png') no-repeat;
+}
+
+.a_indent {
+  text-indent: -9999px;
+}
 

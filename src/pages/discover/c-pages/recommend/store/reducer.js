@@ -3,13 +3,20 @@ import { Map } from 'immutable'
 import {
   CHANGE_BANNERS,
   CHANGE_HOT_RECOMMENDS,
-  CHANGE_NEW_ALBUMS
+  CHANGE_NEW_ALBUMS,
+  CHANGE_RISING_RANKING,
+  CHANGE_NEW_RANKING,
+  CHANGE_ORIGIN_RANKING
 } from './constants'
 
 const defaultState = Map({
   topBanners: [],
   hotRecommends: [],
-  newAlbums: []
+  newAlbums: [],
+  risingRanking: {},
+  newRanking: {},
+  originRanking: {}
+
 })
 
 function reducer(state = defaultState, action) {
@@ -20,6 +27,12 @@ function reducer(state = defaultState, action) {
       return state.set('hotRecommends', action.hotRecommends)
     case CHANGE_NEW_ALBUMS:
       return state.set('newAlbums', action.newAlbums)
+    case CHANGE_RISING_RANKING:
+      return state.set('risingRanking', action.risingRanking)
+    case CHANGE_NEW_RANKING:
+      return state.set('newRanking', action.newRanking)
+    case CHANGE_ORIGIN_RANKING:
+      return state.set('originRanking', action.originRanking)
     default:
       return state
 

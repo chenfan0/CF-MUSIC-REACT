@@ -9,6 +9,7 @@ import {
 import CFTopBanner from './childrenCpns/topBanner'
 import CFHotRecommend from './childrenCpns/hotRecomment'
 import CFNewAlbum from './childrenCpns/newAlbum'
+import CFRanking from './childrenCpns/ranking'
 
 function CFRecommend() {
   return (
@@ -17,7 +18,8 @@ function CFRecommend() {
       <Content className='wrap-v2'>
         <ContentLeft>
           <CFHotRecommend />
-          <CFNewAlbum></CFNewAlbum>
+          <CFNewAlbum />
+          <CFRanking />
         </ContentLeft>
         <ContentRight />
       </Content>
