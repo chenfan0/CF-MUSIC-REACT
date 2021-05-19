@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import {
   getRankingAction
@@ -18,10 +18,10 @@ export default memo(function CFRanking() {
     risingRanking: state.getIn(['recommend', 'risingRanking']),
     newRanking: state.getIn(['recommend', 'newRanking']),
     originRanking: state.getIn(['recommend', 'originRanking']),
-  }))
-  console.log(risingRanking, newRanking, originRanking);
+  }), shallowEqual)
   const dispatch = useDispatch()
-
+  const totalRanking = [originRanking, risingRanking, newRanking]
+  // console.log(totalRanking);
   // other hooks
   useEffect(() => {
     dispatch(getRankingAction(0))
@@ -33,7 +33,11 @@ export default memo(function CFRanking() {
     <RankingWrapper>
       <CFRecommendHeader title={{ content: '榜单', link: '/discover/toplist' }} />
       <RankingTable className='recommend_bg_img '>
-        <CFTopRanking />
+        {
+          totalRanking.map((item, index) => {
+            return <CFTopRanking key={index} ranking={item} />
+          })
+        }
       </RankingTable>
     </RankingWrapper>
   )

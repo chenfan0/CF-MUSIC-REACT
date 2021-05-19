@@ -87,6 +87,10 @@ body {
   background: url('../img/sprite_icon.png') no-repeat 0 9999px;
 }
 
+.sprite_icon_02 {
+  background: url('../img/sprite_icon2.png') no-repeat 0 9999px;
+}
+
 .mine_bgc_img {
   background: url('../img/mine_sprite.png') no-repeat;
   background-size: 100%;
