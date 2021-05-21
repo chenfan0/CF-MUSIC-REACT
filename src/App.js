@@ -11,6 +11,7 @@ import store from './store'
 // 导入组件区域
 import CFAppHeader from '@/components/app-header'
 import CFAppFooter from '@/components/app-footer'
+import CFPlayer from '@/pages/songs/player'
 
 export default memo(function APP() {
   return (
@@ -19,6 +20,7 @@ export default memo(function APP() {
         <CFAppHeader />
         {renderRoutes(routes)}
         <CFAppFooter />
+        <CFPlayer />
       </BrowserRouter>
     </Provider>
   )

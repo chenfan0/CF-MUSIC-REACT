@@ -1,11 +1,22 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 
 import { getImgSize } from '@/utilis/format'
+import emitter from '@/utilis/events'
 
 import { TopRankingWrapper } from './style'
 
 export default memo(function CFTopRaning(props) {
+  // state and props
   const { ranking } = props
+  // redux hooks
+
+  // other hooks
+
+  //  other
+  const play = useCallback((id) => {
+    emitter.emit('play', id)
+  }, [])
+
   return (
     <TopRankingWrapper>
       <header>
@@ -29,7 +40,7 @@ export default memo(function CFTopRaning(props) {
                     {item.name}
                   </a>
                   <div className='icon'>
-                    <a className='play sprite_02' href='#/'> </a>
+                    <a className='play sprite_02' href='#/' onClick={() => { play(item.id) }}> </a>
                     <a className='add sprite_icon_02' href='#/'> </a>
                     <a className='collect sprite_02' href='#/'> </a>
                   </div>

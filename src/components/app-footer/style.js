@@ -95,7 +95,7 @@ export const FooterRight = styled.div`
       background-position: -60px -456px;
     }
     span {
-      background-position: 0 34px;
+      background-position: 0px -104px;
     }
   }
 

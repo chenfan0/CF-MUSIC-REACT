@@ -5,6 +5,7 @@ import CFDiscover from '@/pages/discover'
 import CFMine from '@/pages/mine'
 import CFFriends from '@/pages/friends'
 import CFDownload from '@/pages/download'
+import CFSong from '@/pages/songs'
 
 // 导入discover子路由
 import CFRecommend from '@/pages/discover/c-pages/recommend'
@@ -56,6 +57,10 @@ const routes = [
         path: '/discover/album',
         component: CFAlbum
       },
+      {
+        path: '/discover/songs',
+        component: CFSong
+      }
     ]
   },
   {
@@ -69,7 +74,7 @@ const routes = [
   {
     path: '/download',
     component: CFDownload
-  }
+  },
 ]
 
 export default routes

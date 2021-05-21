@@ -108,6 +108,14 @@ body {
   background: url('../img/recommend-top-bg.png') no-repeat;
 }
 
+.playbar {
+  background: url('../img/playbar_sprite.png') no-repeat 0 9999px;
+}
+
+.button_01 {
+  background: url('../img/sprite_button.png') no-repeat 0 9999px;
+}
+
 .a_indent {
   text-indent: -9999px;
 }

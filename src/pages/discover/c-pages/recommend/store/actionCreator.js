@@ -3,6 +3,7 @@ import {
   getHotRecommends,
   getNewAlbums,
   getRanking,
+  getEnterSingers
 } from '@/services/recommend'
 import {
   CHANGE_BANNERS,
@@ -10,7 +11,8 @@ import {
   CHANGE_NEW_ALBUMS,
   CHANGE_RISING_RANKING,
   CHANGE_NEW_RANKING,
-  CHANGE_ORIGIN_RANKING
+  CHANGE_ORIGIN_RANKING,
+  CHANGE_ENTER_SINGERS
 } from './constants'
 import { HOT_RECOMMEND_LIMIT } from '@/common/constant'
 
@@ -44,6 +46,11 @@ export const changeOriginRanking = (res) => ({
   originRanking: res.playlist
 })
 
+export const changeEnterSingers = (res) => ({
+  type: CHANGE_ENTER_SINGERS,
+  enterSingers: res.artists
+})
+
 export const getTopBannersAction = () => {
   return dispatch => {
     getTopBanners().then(res => {
@@ -72,18 +79,27 @@ export const getNewAlbumsAction = () => {
 export const getRankingAction = (idx) => {
   return dispatch => {
     getRanking(idx).then(res => {
+      // console.log(res);
       switch (idx) {
         case 0:
-          dispatch(changeRisingRanking(res))
-          break
-        case 2:
           dispatch(changeNewRanking(res))
           break
-        case 3:
+        case 2:
           dispatch(changeOriginRanking(res))
+          break
+        case 3:
+          dispatch(changeRisingRanking(res))
           break
         default:
       }
+    })
+  }
+}
+
+export const getEnterSingersAction = (cat, limit) => {
+  return dispatch => {
+    getEnterSingers(cat, limit).then((res) => {
+      dispatch(changeEnterSingers(res))
     })
   }
 }

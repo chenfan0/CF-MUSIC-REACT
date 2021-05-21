@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { getNewAlbumsAction } from '../../store/actionCreator'
 import { getImgSize } from '@/utilis/format'
+// import emitter from '@/utilis/events'
 
 import {
   NewAlbumWrapper,
@@ -49,6 +50,10 @@ export default memo(function CFNewAlbum() {
   const rollerList = useRef()
 
   // 其他逻辑
+  const play = useCallback((id) => {
+    console.log(id)
+    // emitter.emit('play', id)
+  }, [])
 
 
   return (
@@ -63,11 +68,11 @@ export default memo(function CFNewAlbum() {
                   return null
                 } else {
                   return (
-                    <div className='sprite_02' key={item.id}>
-                      <div className='cover sprite_cover' >
+                    <div className='sprite_02' key={item.id} >
+                      <div className='cover sprite_cover'  >
                         <div className='image-cover sprite_cover' />
-                        <img src={getImgSize(item.picUrl, 100)} alt={item.name} className='img'></img>
-                        <p className='music-name text-nowrap'>{item.name}</p>
+                        <img src={getImgSize(item.picUrl, 100)} alt={item.name} className='img' ></img>
+                        <p className='music-name text-nowrap' onClick={() => { play(item.id) }}>{item.name}</p>
                         <p className='artist-name'>{item.artist.name}</p>
                       </div>
                     </div>

@@ -24,7 +24,9 @@ export const HeaderLeft = styled.div`
   .logo {
     width: 176px;
     height: 70px;
-  }
+    background-position: 0 0;
+}
+  
   .m-nav-item {
     display: flex;
     position: relative;

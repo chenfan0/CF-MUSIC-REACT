@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Recommend = styled.div`
 `
 export const Content = styled.div`
+  display: flex;
   background-color: #fff;
 `
 export const ContentLeft = styled.div`

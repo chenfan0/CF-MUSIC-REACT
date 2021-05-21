@@ -20,7 +20,7 @@ export default memo(function CFRanking() {
     originRanking: state.getIn(['recommend', 'originRanking']),
   }), shallowEqual)
   const dispatch = useDispatch()
-  const totalRanking = [originRanking, risingRanking, newRanking]
+  const totalRanking = [risingRanking, newRanking, originRanking]
   // console.log(totalRanking);
   // other hooks
   useEffect(() => {

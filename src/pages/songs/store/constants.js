@@ -1,0 +1,2 @@
+export const CHANGE_CURRENT_SONG = 'songs/CHANGE_CURRENT_SONG'
+

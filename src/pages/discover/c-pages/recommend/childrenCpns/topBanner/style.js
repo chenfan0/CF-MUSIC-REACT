@@ -21,10 +21,10 @@ export const CFTopBannerWrapper = styled.div`
     }
   }
   .banner-left-btn {
-    left: 190px;
+    left: 20%;
   }
   .banner-right-btn {
-    right: 190px;
+    right: 20%;
   }
 `
 

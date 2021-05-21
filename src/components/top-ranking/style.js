@@ -102,6 +102,7 @@ export const TopRankingWrapper = styled.div`
     }
   }
     .get-more {
+      margin-top: 5px;
       a {
         margin-left: 120px;
         color: #000;
