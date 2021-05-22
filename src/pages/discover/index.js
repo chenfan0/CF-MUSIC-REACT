@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import {
   discoverNavLink
@@ -9,7 +10,6 @@ import {
   DiscoverNav,
   DiscoverMenu
 } from './style'
-import { NavLink } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 
 export default memo(function CFDiscover(props) {

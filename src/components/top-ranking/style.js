@@ -74,7 +74,7 @@ export const TopRankingWrapper = styled.div`
             left: 120px;
             width: 82px;
             height: 19px;
-            margin-top: 5px;
+            margin-top: 7px;
             a {
               display: none;
               width: 17px;

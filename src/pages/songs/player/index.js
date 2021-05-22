@@ -3,7 +3,10 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import {
-  getCurrentSongAction
+  getCurrentSongAction,
+  changePlayModeAction,
+  changeCurrentAndCurrentIndexAction,
+  changeCurrentLyricIndexAction
 } from '../store/actionCreator'
 import {
   getImgSize,
@@ -13,7 +16,7 @@ import {
 import emitter from '@/utilis/events'
 
 
-import { Slider } from 'antd';
+import { Slider, message } from 'antd';
 import {
   PlayerWrapper,
   PlayerContent,
@@ -21,6 +24,7 @@ import {
   PlayContentCenter,
   PlayContentRight
 } from './style'
+import CFPlayList from './childrenCpns/playList'
 
 export default memo(function CFPlayer() {
   // state
@@ -29,20 +33,28 @@ export default memo(function CFPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   // redux hook
-  const { currentSong } = useSelector(state => ({
-    currentSong: state.getIn(['songs', 'currentSong'])
+  const {
+    currentSong,
+    playList,
+    playMode,
+    lyricList,
+    currentLyricIndex
+  } = useSelector(state => ({
+    currentSong: state.getIn(['songs', 'currentSong']),
+    playList: state.getIn(['songs', 'playList']),
+    playMode: state.getIn(['songs', 'playMode']),
+    currentPlaySongIndex: state.getIn(['songs', 'currentPlaySongIndex']),
+    lyricList: state.getIn(['songs', 'lyricList']),
+    currentLyricIndex: state.getIn(['songs', 'currentLyricIndex'])
   }), shallowEqual)
   const dispatch = useDispatch()
   // other hook
   useEffect(() => {
     dispatch(getCurrentSongAction(1830564209))
   }, [dispatch])
+
   const eventEmitter = useCallback((id) => {
     dispatch(getCurrentSongAction(id))
-    setIsPlaying(true)
-    setTimeout(() => {
-      audioRef.current.play()
-    }, 1000);
   }, [dispatch])
 
   useEffect(() => {
@@ -53,9 +65,15 @@ export default memo(function CFPlayer() {
   }, [dispatch, eventEmitter])
   useEffect(() => {
     audioRef.current.src = getPlaySong(currentSong.id)
+    audioRef.current.play().then(res => {
+      setIsPlaying(true)
+    }).catch(err => {
+      setIsPlaying(false)
+    })
   }, [currentSong])
   const audioRef = useRef()
   const volumeBtn = useRef()
+  const playListRef = useRef()
 
   // other
 
@@ -81,8 +99,35 @@ export default memo(function CFPlayer() {
   }, [isPlaying])
 
   function timeUpdata(e) {
+    const currentTime = e.target.currentTime * 1000
+    let i = 0
     if (!isChanging) {
-      setCurrentTime(e.target.currentTime * 1000)
+      setCurrentTime(currentTime)
+      for (; i < lyricList.length; i++) {
+        // 处理一些没有歌词的歌曲
+        if (lyricList.length === 1) {
+          dispatch(changeCurrentLyricIndexAction(0))
+          message.open({
+            content: lyricList[0].content,
+            duration: 0,
+            key: 'lyric',
+            className: 'lyric'
+          })
+          break
+        }
+        if (lyricList[i].time > currentTime) {
+          if (currentLyricIndex !== i - 1) {
+            dispatch(changeCurrentLyricIndexAction(i - 1))
+            message.open({
+              content: lyricList[i - 1] && lyricList[i - 1].content,
+              duration: 0,
+              key: 'lyric',
+              className: 'lyric'
+            })
+          }
+          break
+        }
+      }
     } else {
       return
     }
@@ -92,7 +137,6 @@ export default memo(function CFPlayer() {
     setIsChanging(true)
     setCurrentTime(value / 1000 * totalTime)
   }, [totalTime])
-
   const musicSliderAfterChange = useCallback((value) => {
     audioRef.current.currentTime = value / 1000 * totalTime / 1000
     setIsChanging(false)
@@ -112,14 +156,34 @@ export default memo(function CFPlayer() {
     audioRef.current.volume = value / 100
   }, [])
 
+  function changePlayMode() {
+    if (playMode === 2) {
+      dispatch(changePlayModeAction(0))
+    } else {
+      dispatch(changePlayModeAction(playMode + 1))
+    }
+  }
+
+  function changeMusic(tag) {
+    // 判断是否为单曲循环 或者 播放列表只有一首歌曲 
+    // 如果是直接重新播放该歌曲
+    if (playMode === 2 || playList.length === 1) {
+      audioRef.current.play()
+      setIsPlaying(true)
+      return
+    }
+    dispatch(changeCurrentAndCurrentIndexAction(tag))
+  }
+
+
 
   return (
     <PlayerWrapper>
       <PlayerContent className='wrap-v2'>
         <PlayeContentLeft isPlaying={isPlaying}>
-          <span className='prev playbar' />
+          <span className='prev playbar' onClick={e => changeMusic(-1)} />
           <span className='pause playbar' onClick={playMusic} />
-          <span className='next playbar' />
+          <span className='next playbar' onClick={e => changeMusic(1)} />
         </PlayeContentLeft>
         <PlayContentCenter>
           <div className='song-img'>
@@ -144,7 +208,7 @@ export default memo(function CFPlayer() {
             </div>
           </div>
         </PlayContentCenter>
-        <PlayContentRight>
+        <PlayContentRight playMode={playMode}>
           <span className='add playbar' />
           <span className='share playbar' />
           <span className='divider playbar' />
@@ -156,13 +220,13 @@ export default memo(function CFPlayer() {
             tipFormatter={null}
             onChange={volumeSliderChange}
           />
-          <span className='play-mode playbar' />
-          <span className='play-list-control playbar' />
-          <span className='play-list-num'>11</span>
-          <div className='play-list'></div>
+          <span className='play-mode playbar' onClick={changePlayMode} />
+          <span className='play-list-control playbar' onClick={e => playListRef.current.toggle()} />
+          <span className='play-list-num' >{playList.length}</span>
+          <CFPlayList ref={playListRef} />
         </PlayContentRight>
       </PlayerContent>
-      <audio ref={audioRef} onTimeUpdate={timeUpdata} />
+      <audio ref={audioRef} onTimeUpdate={timeUpdata} onEnded={e => changeMusic()} />
     </PlayerWrapper>
   )
 })

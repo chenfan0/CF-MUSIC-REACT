@@ -112,6 +112,10 @@ body {
   background: url('../img/playbar_sprite.png') no-repeat 0 9999px;
 }
 
+.play_list_sprite {
+  background: url('../img/playlist_sprite.png') no-repeat, 0 9999px;
+}
+
 .button_01 {
   background: url('../img/sprite_button.png') no-repeat 0 9999px;
 }
@@ -119,4 +123,13 @@ body {
 .a_indent {
   text-indent: -9999px;
 }
+
+.lyric .ant-message-notice-content {
+  position: fixed;
+  left: 50%;
+  bottom: 58px;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+} 
 

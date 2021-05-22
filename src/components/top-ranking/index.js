@@ -1,4 +1,5 @@
 import React, { memo, useCallback } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { getImgSize } from '@/utilis/format'
 import emitter from '@/utilis/events'
@@ -36,9 +37,9 @@ export default memo(function CFTopRaning(props) {
               <div className='content' key={item.id}>
                 <div className='rank-list text-nowrap' >
                   <span className={'no' + index}>{index + 1}</span>
-                  <a href={`/song?${item.id}`} className='text-nowrap music-name'>
+                  <NavLink to={`/discover/songs?id=${item.id}`} className='text-nowrap music-name'>
                     {item.name}
-                  </a>
+                  </NavLink>
                   <div className='icon'>
                     <a className='play sprite_02' href='#/' onClick={() => { play(item.id) }}> </a>
                     <a className='add sprite_icon_02' href='#/'> </a>

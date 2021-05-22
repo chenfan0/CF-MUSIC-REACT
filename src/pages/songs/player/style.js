@@ -153,7 +153,18 @@ export const PlayContentRight = styled.div`
     background-position: -2px -248px;
   }
   .play-mode {
-    background-position: -3px -344px;
+    /* background-position: -3px -344px; */
+    background-position: ${props => {
+    switch (props.playMode) {
+      case 0:
+        return '-3px -344px'
+      case 1:
+        return '-66px -248px'
+      default:
+        return '-66px -344px'
+    }
+  }
+  };
   }
   .play-list-control {
     width: 59px;
@@ -167,16 +178,6 @@ export const PlayContentRight = styled.div`
     right: 15px;
     font-size: 12px;
     color: #666;
-  }
-  .play-list {
-    display: none;
-    position: absolute;
-    bottom: 43px;
-    right: 0%;
-    width: 986px;
-    height: 301px;
-    background-color: rgba(21, 21, 21, 0.95);
-    border-radius: 5px;
   }
 
 `
