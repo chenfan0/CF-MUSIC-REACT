@@ -62,6 +62,10 @@ export const PlayListWrapper = styled.div`
     }
 `
 
+export const PlayListContent = styled.div`
+  display: flex;
+`
+
 export const PlayListContentLeft = styled.div`
   overflow-y: scroll;
   width: 553px;
@@ -127,10 +131,34 @@ export const PlayListContentLeft = styled.div`
       color: #fff;
       font-size: 20px;
       cursor: pointer;
+      user-select: none;
     }
   }
 `
 
 export const PlayListContentRight = styled.div`
-
+  overflow-y: scroll;
+  flex: 1;
+  height: 260px;
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(21, 21, 21, 0.85);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #868686;
+    border-radius: 3px;
+  }
+  p {
+    width: 354px;
+    height: 32px;
+    margin: 0 auto;
+    color: #989898;
+    font-size: 12px;
+    text-align: center;
+  }
+  .active {
+    font-size: 14px;
+    color: #fff;
+    margin: 5px auto;
+  }
 `

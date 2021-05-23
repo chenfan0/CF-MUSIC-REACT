@@ -14,24 +14,6 @@ export const SongsLeft = styled.div`
     display: flex;
     width: 640px;
     height: 507px;
-    .left {
-      position: relative;
-      width: 206px;
-      img {
-        width: 130px;
-        height: 130px;
-        margin-left: 38px;
-        margin-top: 38px;
-        border-radius: 50%;
-      }
-      .img-cover {
-        position: absolute;
-        top: 0;
-        width: 206px;
-        height: 206px;
-        background-position: -140px -580px;
-      }
-    }
   }
 `
 

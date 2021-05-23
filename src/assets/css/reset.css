@@ -120,6 +120,10 @@ body {
   background: url('../img/sprite_button.png') no-repeat 0 9999px;
 }
 
+.button_02 {
+  background: url('../img/sprite_button2.png');
+}
+
 .a_indent {
   text-indent: -9999px;
 }

@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useImperativeHandle, useRef } from 'react'
+import React, { forwardRef, memo, useImperativeHandle, useRef, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { formatDate } from '@/utilis/format'
@@ -11,6 +11,7 @@ import {
 
 import {
   PlayListWrapper,
+  PlayListContent,
   PlayListContentLeft,
   PlayListContentRight
 } from './style'
@@ -20,11 +21,15 @@ export default memo(forwardRef((props, ref) => {
   const {
     playList,
     currentSong,
-    currentPlaySongIndex
+    currentPlaySongIndex,
+    lyricList,
+    currentLyricIndex
   } = useSelector((state) => ({
     playList: state.getIn(['songs', 'playList']),
     currentSong: state.getIn(['songs', 'currentSong']),
-    currentPlaySongIndex: state.getIn(['songs', 'currentPlaySongIndex'])
+    currentPlaySongIndex: state.getIn(['songs', 'currentPlaySongIndex']),
+    lyricList: state.getIn(['songs', 'lyricList']),
+    currentLyricIndex: state.getIn(['songs', 'currentLyricIndex'])
   }), shallowEqual)
 
   const dispatch = useDispatch()
@@ -32,6 +37,7 @@ export default memo(forwardRef((props, ref) => {
 
   // other hooks
   const playListWrapperRef = useRef()
+  const lyricRef = useRef()
 
   useImperativeHandle(ref, () => ({
     toggle: () => {
@@ -43,6 +49,10 @@ export default memo(forwardRef((props, ref) => {
       }
     }
   }), [])
+  useEffect(() => {
+    if (currentLyricIndex > 0 && currentLyricIndex < 3) return;
+    lyricRef.current.scrollTop = currentLyricIndex * 32 - 96
+  }, [currentLyricIndex]);
 
 
   // other handle
@@ -61,7 +71,7 @@ export default memo(forwardRef((props, ref) => {
 
 
   return (
-    <PlayListWrapper ref={playListWrapperRef}>
+    <PlayListWrapper ref={playListWrapperRef}  >
       <header>
         <h2 className='title'>播放列表({playList.length})</h2>
         <div className='collect'>
@@ -74,25 +84,37 @@ export default memo(forwardRef((props, ref) => {
         </div>
         <h2 className='music-name'>{currentSong.name}</h2>
       </header>
-      <PlayListContentLeft>
-        <div className='play-list'>
+      <PlayListContent>
+        <PlayListContentLeft>
+          <div className='play-list'>
+            {
+              playList.map((item, index) => {
+                return (
+                  <div className={`play-list-item${currentPlaySongIndex === index ? ' active' : ''}`} key={item.name} onClick={e => { changeMusic(index) }}>
+                    <i className={`play_list_sprite ${currentPlaySongIndex === index ? ' icon' : ''}`}></i>
+                    <span className='song-name text-nowrap'>{item.name}</span>
+                    <span className='artist text-nowrap'>{item.ar[0].name}</span>
+                    <span className='time text-nowrap'>{formatDate(item.dt, 'mm:ss')}</span>
+                  </div>
+                )
+              })
+            }
+            <div className='close' onClick={closePlayList}>x</div>
+          </div>
+        </PlayListContentLeft>
+        <PlayListContentRight ref={lyricRef}>
           {
-            playList.map((item, index) => {
+            lyricList.map((item, index) => {
               return (
-                <div className={`play-list-item${currentPlaySongIndex === index ? ' active' : ''}`} key={item.name} onClick={e => { changeMusic(index) }}>
-                  <i className={`play_list_sprite ${currentPlaySongIndex === index ? ' icon' : ''}`}></i>
-                  <span className='song-name text-nowrap'>{item.name}</span>
-                  <span className='artist text-nowrap'>{item.ar[0].name}</span>
-                  <span className='time text-nowrap'>{formatDate(item.dt, 'mm:ss')}</span>
+                <div className='lyric' key={index}>
+                  <p className={`${currentLyricIndex === index ? 'active' : ' '}`}>{item.content}</p>
                 </div>
               )
             })
           }
-          <div className='close' onClick={closePlayList}>x</div>
-        </div>
-      </PlayListContentLeft>
-      <PlayListContentRight></PlayListContentRight>
-    </PlayListWrapper>
+        </PlayListContentRight>
+      </PlayListContent>
+    </PlayListWrapper >
   )
 
 })
