@@ -19,7 +19,7 @@ export const ShowSongDetailWrapper = styled.div`
     }
   }
   .singer {
-    margin: 18px 0;
+    margin: 10px 0;
     color: #999;
     font-size: 12px;
     .singer-name {
@@ -32,6 +32,7 @@ export const ShowSongDetailWrapper = styled.div`
   }
   .album {
     font-size: 12px;
+    margin-bottom: 10px;
     color: #999;
     a {
       color: #0c73c2;
