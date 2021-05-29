@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { Redirect } from 'react-router'
 
-import CFDiscover from '@/pages/discover'
-import CFMine from '@/pages/mine'
-import CFFriends from '@/pages/friends'
-import CFDownload from '@/pages/download'
-import CFSong from '@/pages/songs'
+// 路由懒加载
+const CFDiscover = lazy(() => import('@/pages/discover'))
+const CFMine = lazy(() => import('@/pages/mine'))
+const CFFriends = lazy(() => import('@/pages/friends'))
+const CFDownload = lazy(() => import('@/pages/download'))
+const CFSong = lazy(() => import('@/pages/songs'))
+
+// 路由普通加载
+// import CFDiscover from '@/pages/discover'
+// import CFMine from '@/pages/mine'
+// import CFFriends from '@/pages/friends'
+// import CFDownload from '@/pages/download'
+// import CFSong from '@/pages/songs'
 
 // 导入discover子路由
-import CFRecommend from '@/pages/discover/c-pages/recommend'
-import CFToplist from '@/pages/discover/c-pages/toplist'
-import CFPlaylist from '@/pages/discover/c-pages/playlist'
-import CFDjradio from '@/pages/discover/c-pages/djradio'
-import CFArtist from '@/pages/discover/c-pages/artist'
-import CFAlbum from '@/pages/discover/c-pages/album'
+const CFRecommend = lazy(() => import('@/pages/discover/c-pages/recommend'))
+const CFToplist = lazy(() => import('@/pages/discover/c-pages/toplist'))
+const CFPlaylist = lazy(() => import('@/pages/discover/c-pages/playlist'))
+const CFDjradio = lazy(() => import('@/pages/discover/c-pages/djradio'))
+const CFArtist = lazy(() => import('@/pages/discover/c-pages/artist'))
+const CFAlbum = lazy(() => import('@/pages/discover/c-pages/album'))
+
+// import CFRecommend from '@/pages/discover/c-pages/recommend'
+// import CFToplist from '@/pages/discover/c-pages/toplist'
+// import CFPlaylist from '@/pages/discover/c-pages/playlist'
+// import CFDjradio from '@/pages/discover/c-pages/djradio'
+// import CFArtist from '@/pages/discover/c-pages/artist'
+// import CFAlbum from '@/pages/discover/c-pages/album'
 
 
 const routes = [

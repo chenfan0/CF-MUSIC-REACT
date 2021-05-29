@@ -1,5 +1,5 @@
 // 导入第三方库区域
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 import { BrowserRouter } from 'react-router-dom'
@@ -18,7 +18,10 @@ export default memo(function APP() {
     <Provider store={store}>
       <BrowserRouter>
         <CFAppHeader />
-        {renderRoutes(routes)}
+        {/* 当路由用懒加载方式进行导入时，要用Suspense进行占位，该标签是当页面还没渲染出来时会渲染fallback里的东西*/}
+        <Suspense fallback={<div>page loadding</div>}>
+          {renderRoutes(routes)}
+        </Suspense>
         <CFAppFooter />
         <CFPlayer />
       </BrowserRouter>
