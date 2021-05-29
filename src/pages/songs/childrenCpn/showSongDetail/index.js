@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { ShowSongDetailWrapper } from './style'
 import CFSongOperationBar from '@/components/song-operation-bar'
+import CFShowLyric from '../showLyric'
 
 export default memo(function CFShowSongDetail(props) {
   // props and state
@@ -37,6 +38,9 @@ export default memo(function CFShowSongDetail(props) {
         shareTitle="分享"
         downloadTitle="下载"
         commentTitle="(167366)" />
+      <CFShowLyric /> 
     </ShowSongDetailWrapper>
+
+
   )
 })

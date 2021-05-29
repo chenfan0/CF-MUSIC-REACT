@@ -8,7 +8,7 @@ export default memo(function CFSongOperationBar(props) {
   return (
     <OperationBarWrapper>
       <span className="play">
-        <a href="/abc" className="play-icon button_01">
+        <a href="/" className="play-icon button_01">
           <span className="play button_01">
             <i className="button_01"></i>
             <span>播放</span>

@@ -13,7 +13,6 @@ export const SongsLeft = styled.div`
   .song-detail {
     display: flex;
     width: 640px;
-    height: 507px;
   }
 `
 
