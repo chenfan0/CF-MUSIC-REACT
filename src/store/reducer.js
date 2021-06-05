@@ -3,10 +3,12 @@ import { combineReducers } from 'redux-immutable'
 
 import { reducer as recommendReducer } from '../pages/discover/c-pages/recommend/store'
 import { reducer as songsReducer } from '../pages/songs/store'
+import {reducer as toplistReducer} from '../pages/discover/c-pages/toplist/store'
 
 const totalReducer = combineReducers({
   recommend: recommendReducer,
-  songs: songsReducer
+  songs: songsReducer,
+  toplist: toplistReducer
 })
 
 export default totalReducer

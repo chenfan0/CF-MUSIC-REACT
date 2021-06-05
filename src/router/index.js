@@ -54,7 +54,7 @@ const routes = [
       },
       {
         path: '/discover/toplist',
-        component: CFToplist
+        component: CFToplist,
       },
       {
         path: '/discover/playlist',
