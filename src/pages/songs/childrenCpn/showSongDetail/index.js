@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom';
 
 import { ShowSongDetailWrapper } from './style'
-import CFSongOperationBar from '@/components/song-operation-bar'
+import CFBtns from '@/components/btns'
 import CFShowLyric from '../showLyric'
 
 export default memo(function CFShowSongDetail(props) {
@@ -33,12 +33,8 @@ export default memo(function CFShowSongDetail(props) {
         <span>所属专辑：</span>
         <NavLink to={'/discover/album'} >{al}</NavLink>
       </div>
-      <CFSongOperationBar
-        favorTitle="收藏"
-        shareTitle="分享"
-        downloadTitle="下载"
-        commentTitle="(167366)" />
-      <CFShowLyric /> 
+      <CFBtns collect={true} />
+      <CFShowLyric />
     </ShowSongDetailWrapper>
 
 

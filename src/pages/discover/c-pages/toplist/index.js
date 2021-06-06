@@ -13,7 +13,7 @@ export default memo(function CFToplist(props) {
   return (
     <TopListWrapper className='wrap-v2'>
       <CFTotalToplist id={id} />
-      <CFToplistDetail />
+      <CFToplistDetail id={id} />
     </TopListWrapper>
   )
 })

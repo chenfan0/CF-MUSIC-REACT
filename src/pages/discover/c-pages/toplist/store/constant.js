@@ -1,2 +1,2 @@
 export const CHANGE_TOTAL_TOPLIST = 'toplist/CHANGE_TOTAL_TOPLIST'
-
+export const CHANGE_TOPLIST_DETAIL = 'toplist/CHANGE_TOPLIST_DETAIL'
