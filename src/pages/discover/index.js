@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import {
@@ -14,8 +14,6 @@ import { renderRoutes } from 'react-router-config'
 
 export default memo(function CFDiscover(props) {
   const { route } = props
-  useEffect(() => {
-  })
   return (
     <DiscoverWrapper>
       <DiscoverNav>

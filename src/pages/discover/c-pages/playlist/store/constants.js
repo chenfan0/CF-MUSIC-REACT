@@ -1,0 +1,2 @@
+export const CHANGE_TOTAL_CATEGORY = 'playlist/CHANGE_TOTAL_CATEGORY'
+
