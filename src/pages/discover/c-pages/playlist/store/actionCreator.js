@@ -1,13 +1,23 @@
 import {
-  CHANGE_TOTAL_CATEGORY
+  CHANGE_TOTAL_CATEGORY,
+  CHANGE_CATEGORY_LIST
 } from './constants'
 
-import { getPlaylistTotalCategory } from '@/services/playlist'
+import {
+  getPlaylistTotalCategory,
+  getSongCategoryList
+} from '@/services/playlist'
 
 export const changePlaylistCategoriesAction = (res) => ({
   type: CHANGE_TOTAL_CATEGORY,
   categories: res
 })
+
+export const changePlaylistListAction = (res) => ({
+  type: CHANGE_CATEGORY_LIST,
+  categoryList: res
+})
+
 
 export const getPlaylistTotalCategoryAction = () => {
   return dispatch => {
@@ -40,6 +50,15 @@ export const getPlaylistTotalCategoryAction = () => {
         }
       }
       dispatch(changePlaylistCategoriesAction(categoryInfo))
+    })
+  }
+}
+
+export const getSongCategoryListAction = (cat, offset) => {
+  return dispatch => {
+    getSongCategoryList(cat, offset).then(res => {
+      console.log(res);
+      dispatch(changePlaylistListAction(res))
     })
   }
 }

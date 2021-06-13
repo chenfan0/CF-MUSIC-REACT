@@ -18,7 +18,7 @@ export default memo(function CFSongCover(props) {
   }, [])
   return (
     <SongCoverWrapper>
-      <img src={getImgSize(item.picUrl, 140)} alt={item.name} className='image' />
+      <img src={getImgSize(item.picUrl || item.coverImgUrl, 140)} alt={item.name} className='image' />
       <div className='img-cover  sprite_cover'>
         <div className='bottom sprite_cover'>
           <div className='left'>

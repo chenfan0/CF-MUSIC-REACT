@@ -15,7 +15,7 @@ import CFPlayer from '@/pages/songs/player'
 
 export default memo(function APP() {
   return (
-    <Provider store={store}>
+    <Provider store={store} >
       <BrowserRouter>
         <CFAppHeader />
         {/* 当路由用懒加载方式进行导入时，要用Suspense进行占位，该标签是当页面还没渲染出来时会渲染fallback里的东西*/}

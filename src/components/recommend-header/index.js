@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 import {
@@ -13,13 +14,13 @@ export default memo(function CFRecommendHeader(props) {
     <RecommendHeaderWrapper>
       <RecommendHeaderLeft>
         <i className='icon sprite_02'></i>
-        <h3 className='title'><a href={title.link}>{title.content}</a></h3>
+        <h3 className='title'><NavLink to={title.link}>{title.content}</NavLink></h3>
         <div className='list'>
           {
             list.map((item) => {
               return (
                 <div key={item.content} className='list-item'>
-                  <a href={item.link}>{item.content}</a>
+                  <NavLink to={item.link}>{item.content}</NavLink>
                 </div>
               )
             })

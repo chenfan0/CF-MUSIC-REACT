@@ -5,12 +5,14 @@ import { reducer as recommendReducer } from '../pages/discover/c-pages/recommend
 import { reducer as songsReducer } from '../pages/songs/store'
 import { reducer as toplistReducer } from '../pages/discover/c-pages/toplist/store'
 import { reducer as playlistReducer } from '../pages/discover/c-pages/playlist/store'
+import { reducer as djradioReducer } from '../pages/discover/c-pages/djradio/store'
 
 const totalReducer = combineReducers({
   recommend: recommendReducer,
   songs: songsReducer,
   toplist: toplistReducer,
-  playlist: playlistReducer
+  playlist: playlistReducer,
+  djradio: djradioReducer
 })
 
 export default totalReducer

@@ -1,0 +1,78 @@
+import styled from 'styled-components'
+
+export const DjradioRecommendWrapper = styled.div`
+  width: 426px;
+  margin-right: 40px;
+
+  .recommend-item {
+    display: flex;
+    position: relative;
+    height: 60px;
+    border-left: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+    padding: 10px 20px;
+    &:nth-of-type(2n+1) {
+      background-color: #f7f7f7;
+    }
+    &:hover {
+      background-color: #eeeeee;
+      .icon {
+        display: block;
+      }
+    }
+
+    .icon {
+      display: none;
+      position: absolute;
+      top: 19px;
+      left: 28px;
+      width: 22px;
+      height: 22px;
+      background-position: 0 -85px;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .descripe {
+      width: 254px;
+      font-size: 12px;
+      margin-left: 8px;
+      margin-right: 15px;
+      p {
+        color: #333;
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+      span {
+        display: block;
+        color: #999;
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .tag {
+      height: 18px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #999;
+      border: 1px solid #999;
+      &:hover {
+        cursor: pointer;
+        border-color: #666;
+        color: #666;
+      }
+    }
+  }
+`
+

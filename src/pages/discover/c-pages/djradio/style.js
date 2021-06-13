@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
-export const PlaylistWrapper = styled.div`
+export const DjRadio = styled.div`
   padding: 35px;
-  background-color: #fff;
   border-left: 1px solid #d3d3d3;
   border-right: 1px solid #d3d3d3;
-  .pagination {
+  background-color: #fff;
+
+  .recommend-ranking {
     display: flex;
-    justify-content: center;
   }
 `
+

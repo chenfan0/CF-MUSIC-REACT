@@ -11,7 +11,7 @@ export function formatPlayCount(playCount) {
   if (playCount / 10000 < 10000) {
     return Math.ceil(playCount / 1000) / 10 + '万'
   } else {
-    return Math.ceil(playCount / 1000) / 10 + '亿'
+    return Math.ceil(playCount / 10000000) / 10 + '亿'
   }
 }
 
