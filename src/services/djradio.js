@@ -20,3 +20,29 @@ export function getRanking(limit = 10) {
     }
   })
 }
+
+export function getRadioList() {
+  return request({
+    url: '/dj/category/recommend'
+  })
+}
+
+export function getNewDjradio(type) {
+  return request({
+    url: "/dj/recommend/type",
+    params: {
+      type
+    }
+  })
+}
+
+export function getDjRadioRanking(cateId, limit, offset) {
+  return request({
+    url: "/dj/radio/hot",
+    params: {
+      cateId,
+      limit,
+      offset
+    }
+  })
+}

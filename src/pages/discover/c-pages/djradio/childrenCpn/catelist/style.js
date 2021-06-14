@@ -4,6 +4,14 @@ export const CatelistWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 25px;
+  .select {
+    color: #db5e5e;
+    border: 2px solid #db5e5e;
+    border-radius: 4px;
+    .icon {
+      background-position: -48px 0!important;
+    }
+  }
 `
 
 export const CatelistItemWrapper = styled.div`

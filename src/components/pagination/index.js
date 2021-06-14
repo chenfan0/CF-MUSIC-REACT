@@ -5,7 +5,7 @@ import { Pagination } from 'antd';
 
 export default memo(function CFPagination(props) {
   // props
-  const { total, onChange, currentPage } = props
+  const { total, onChange, currentPage, pageSize } = props
 
   // other handle
   function itemRender(page, type, originalElement) {
@@ -30,7 +30,7 @@ export default memo(function CFPagination(props) {
         current={currentPage}
         defaultCurrent={1}
         total={total}
-        pageSize={35}
+        pageSize={pageSize}
         showSizeChanger={false}
         itemRender={itemRender}
         onChange={onChange} />

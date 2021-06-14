@@ -27,7 +27,7 @@ export const RankingWrapper = styled.div`
       display: none;
       position: absolute;
       top: 19px;
-      left: 55px;
+      left: 63px;
       width: 22px;
       height: 22px;
       background-position: 0 -85px;
@@ -47,6 +47,7 @@ export const RankingWrapper = styled.div`
       margin-left: 8px;
       margin-right: 15px;
       p {
+        width: 208px;
         color: #333;
         &:hover {
           cursor: pointer;
@@ -63,5 +64,21 @@ export const RankingWrapper = styled.div`
       }
     }
   }
+`
+
+export const Progress = styled.div`
+  position: absolute;
+  top: 26px;
+  right: 25px;
+  width: 92px;
+  height: 8px;
+  background-color: #dedede;
+  border-radius: 4px;
+  .progress-rate {
+    width: ${props => props.score / 112943 * 100}%;
+    height: 8px;
+    background-color: #c6c6c6;
+    border-radius: 4px;
+}
 `
 

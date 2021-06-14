@@ -8,6 +8,7 @@ export const DjRadio = styled.div`
 
   .recommend-ranking {
     display: flex;
+    margin-bottom: 40px;
   }
 `
 

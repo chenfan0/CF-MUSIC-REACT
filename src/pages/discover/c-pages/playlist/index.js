@@ -35,7 +35,7 @@ export default memo(function CFPlaylist(props) {
     <PlaylistWrapper className='wrap-v2'>
       <CFPlaylistHeader />
       <CFList />
-      <CFPagination total={categoryList.total} onChange={onChange} currentPage={currentPage} />
+      <CFPagination total={categoryList.total} onChange={onChange} currentPage={currentPage} pageSize={35} />
     </PlaylistWrapper>
   )
 })

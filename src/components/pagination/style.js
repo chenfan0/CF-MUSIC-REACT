@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const PaginationWrapper = styled.div`
+  width: 100%;
   .btn {
     height: 25px;
     /* margin-right: 8px; */

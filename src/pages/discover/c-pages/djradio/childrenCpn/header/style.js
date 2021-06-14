@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 426px;
   border-bottom: 2px solid #c20c0c;
 
   .title {
