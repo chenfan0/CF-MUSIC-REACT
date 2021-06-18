@@ -1,0 +1,2 @@
+export const CHAGNE_ARTIST_LIST = 'artist/CHAGNE_ARTIST_LIST'
+
