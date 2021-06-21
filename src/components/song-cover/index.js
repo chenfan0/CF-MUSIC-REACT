@@ -12,6 +12,7 @@ import {
 
 export default memo(function CFSongCover(props) {
   const { item } = props
+  console.log(item);
   const play = useCallback((id) => {
     // emitter.emit('play', id)
     console.log(id)
